@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+   "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="config" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> 
+		<property name="location" value="classpath:application.properties"/>
+	</bean>
+	
+  	
+  	<bean id="milk" class="org.croteau.supermarket.domainImpl.GroceryItem">
+    	<property name="upc" value="8873" />
+    	<property name="price" value="2.49"/>
+    	<property name="description" value="Milk"/>
+  	</bean>	
+
+  	<bean id="toothbrush" class="org.croteau.supermarket.domainImpl.GroceryItem">
+    	<property name="upc" value="1983" />
+    	<property name="price" value="1.99"/>
+    	<property name="description" value="Toothbrush"/>
+  	</bean>	
+
+  	<bean id="wine" class="org.croteau.supermarket.domainImpl.GroceryItem">
+    	<property name="upc" value="0923" />
+    	<property name="price" value="15.49"/>
+    	<property name="description" value="Bottled Wine"/>
+  	</bean>	
+
+  	<bean id="chips" class="org.croteau.supermarket.domainImpl.GroceryItem">
+    	<property name="upc" value="6732" />
+    	<property name="price" value="2.49"/>
+    	<property name="description" value="Chips"/>
+  	</bean>	
+
+  	<bean id="salsa" class="org.croteau.supermarket.domainImpl.GroceryItem">
+    	<property name="upc" value="4900" />
+    	<property name="price" value="3.49"/>
+    	<property name="description" value="Salsa"/>
+  	</bean>	
+   
+
+  	 	
+  	<bean id="buyXgetYFree" class="org.croteau.supermarket.domainImpl.BuyXGetYFree">
+  		<property name="uuid" value="TOOTHSPECIAL"/>
+  		<property name="item" ref="toothbrush"/>
+  		<property name="buyQuantity" value="2"/>
+  		<property name="freeQuantity" value="1"/>
+  		<property name="description" value="Toothbrush Special : Buy 2 get 1 Free"/>
+  	</bean>
+  	
+  	<bean id="wineTax" class="org.croteau.supermarket.domainImpl.AdditionalTaxes">
+  		<property name="uuid" value="WINETAX"/>
+  		<property name="item" ref="wine"/>
+  		<property name="tax" value="0.0925"/>
+  		<property name="description" value="Wine Tax : 9.25%"/>
+  	</bean>
+  	
+
+ 	
+ 	<bean id="bundle" class="org.croteau.supermarket.domainImpl.Bundled">
+ 		<property name="uuid" value="BUNDLED"/>
+ 		<property name="comboPrice" value="4.99"/>
+ 		<property name="description" value="Chips and Salsa Combo Special : $4.99 "/>
+ 		<property name="bundledItems">
+ 			<list>
+ 				<ref bean="chips"/>
+ 				<ref bean="salsa"/>
+ 			</list>
+ 		</property>
+ 	</bean>
+ 	
+ 	
+ 	
+ 	<bean id="initialShipment" class="org.croteau.supermarket.servicesImpl.GroceryShipment">
+ 		<property name="uuid" value="INITIAL123"/>
+  		<property name="shipmentDetails">
+			<map>
+				<entry key-ref="milk" value="20"/>
+				<entry key-ref="toothbrush" value="20"/>
+				<entry key-ref="wine" value="20"/>
+				<entry key-ref="chips" value="20"/>
+				<entry key-ref="salsa" value="20"/>
+			</map>
+		</property>
+  	</bean>
+  	
+  	
+  	
+  	<bean id="store" class="org.croteau.supermarket.servicesImpl.GroceryStore">
+  		<property name="storeName" value="Pete's Groceries"/>
+  		<property name="storeSpecials">
+  			<map>
+  				<entry key="BUNDLE" value-ref="bundle"/>
+  				<entry key="TOOTHSPECIAL" value-ref="buyXgetYFree"/>
+  				<entry key="WINETAX" value-ref="wineTax"/>
+  			</map>
+  		</property>
+  		
+  		<property name="storeShipments">
+  			<map>
+  				<entry key="unprocessed">
+  			  		<map>
+	  					<entry key="INITIAL123" value-ref="initialShipment"/>
+	  				</map>		
+  				</entry>
+  			</map>
+  		</property>
+		<property name="itemsMap">
+			<map>
+				<entry key="8873" value-ref="milk"/>
+				<entry key="1983" value-ref="toothbrush"/>
+				<entry key="0923" value-ref="wine"/>
+				<entry key="6732" value-ref="chips"/>
+				<entry key="4900" value-ref="salsa"/>
+			</map>
+		</property>
+		<property name="reverseLookupMap">
+			<map>
+				<entry key="milk" value="8873"/>
+				<entry key="toothbrush" value="1983"/>
+				<entry key="wine" value="0923"/>
+				<entry key="chips" value="6732"/>
+				<entry key="salsa" value="4900"/>
+			</map>
+		</property>
+  	</bean>
+  	
+  	
+
+</beans>

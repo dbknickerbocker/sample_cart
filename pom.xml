@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 				
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.croteau.supermarket</groupId>
+	<artifactId>supermarket</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>supermarket</name>
+	
+	<properties>
+	  <junit.version>4.4</junit.version>
+	  <jackson.version>1.9.5</jackson.version>
+	  <spring.version>3.1.0.RELEASE</spring.version>
+	</properties>
+
+
+    
+	<dependencies>
+		
+	  	<dependency>
+	    	<groupId>junit</groupId>
+	    	<artifactId>junit</artifactId>
+	    	<version>${junit.version}</version>
+	  	</dependency>
+	  	
+	  	<dependency>
+	    	<groupId>org.codehaus.jackson</groupId>
+	    	<artifactId>jackson-core-asl</artifactId>
+	    	<version>${jackson.version}</version>
+	  	</dependency>
+	  	
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-beans</artifactId>
+		  <version>${spring.version}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+            
+					
+	</dependencies>
+
+
+  
+
+  	<build>
+    	
+    	<defaultGoal>install</defaultGoal>
+    	
+	    <directory>target</directory>
+	    <outputDirectory>target/classes</outputDirectory>
+	    <finalName>${project.artifactId}-${project.version}</finalName>
+	    <testOutputDirectory>target/test-classes</testOutputDirectory>
+	    <sourceDirectory>src/main/java</sourceDirectory>
+	    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+	    <testSourceDirectory>src/test/java</testSourceDirectory>
+	    
+	    
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		
+  	  	<plugins>
+  	  	
+  	  		<plugin>
+  	  	        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>exec-maven-plugin</artifactId>
+				<version>1.1</version>
+		        <executions>
+		        	<execution>
+		            	<goals>
+		              		<goal>java</goal>
+		            	</goals>
+		          	</execution>
+		        </executions>
+		 
+		        <configuration>
+		        	<mainClass>org.croteau.supermarket.App</mainClass>
+		        </configuration>
+	      </plugin>
+  	  	  	<plugin>
+  	  	  	  	<inherited>true</inherited>
+  	  	  	  	<groupId>org.apache.maven.plugins</groupId>
+  	  	  	  	<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<compilerVersion>1.5</compilerVersion>
+				</configuration>
+  	  	  	</plugin>
+
+  	  	</plugins>
+  	</build>
+
+  
+</project>
