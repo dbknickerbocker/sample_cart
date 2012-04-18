@@ -1,5 +1,10 @@
 # TexelTek Supermarket Pricing Coding Exercise
 
+###Running the project
+
+mvn package exec:java
+
+
 ## Problem Description
 
 Your team is starting a new project with Super Food, a chain of supermarkets across the country. Create a program for Super Food’s point of sale system that uses their pricing scheme to calculate the total price for a number of items. Your code will become the core of a point of sale system, so make sure it represents your best code.
