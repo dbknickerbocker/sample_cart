@@ -39,7 +39,9 @@ public class App implements SupermarketConstants{
     	
     	GroceryShopping shopping = new GroceryShopping(store, shoppingCart);
 
-    	System.out.println("\n\n Welcome to Joe's Supermarket... \n\n");
+    	System.out.println("\n\n Welcome to Joe's Supermarket... \n");
+    	
+    	System.out.println("type \"help\" to see the list of commands : \n\n");
     	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		

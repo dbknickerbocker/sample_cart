@@ -1,12 +1,10 @@
 
 import static org.junit.Assert.*;
 
-
 import org.croteau.supermarket.services.ShoppingCart;
 import org.croteau.supermarket.services.Store;
 import org.croteau.supermarket.servicesImpl.GroceryShopping;
 import org.croteau.supermarket.servicesImpl.GroceryShoppingCart;
-import org.junit.Test; 
 import org.junit.*;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -27,7 +25,6 @@ public class TestShoppingTest{
 	private static final String CHIPS      = "chips";
 	private static final String SALSA      = "salsa";
 	
-
 	
 	@BeforeClass
 	public static void beforeClass() {
@@ -35,7 +32,7 @@ public class TestShoppingTest{
     	store = (Store)beanFactory.getBean("store");
     	store.processShipments();
     	shoppingCart = new GroceryShoppingCart(store);
-    	shopping = new GroceryShopping(store, shoppingCart);
+    	shopping = new GroceryShopping(store, shoppingCart);  	
     }
 	
 
@@ -138,13 +135,14 @@ public class TestShoppingTest{
 		
 	}
 
-	
+
 	
 	private void addProductsToCart(int quantity, String description){
 		for(int m = 0; m < quantity; m++){
 			shopping.addItemToShoppingCart(description);
 		}
 	}
+
 
 
 }

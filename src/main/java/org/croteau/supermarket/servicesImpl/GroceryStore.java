@@ -115,10 +115,13 @@ public class GroceryStore implements Store{
 	
 	
 	public void removeStoreItemInStock(StoreItem storeItem) {
-		if(this.storeItemsInStock.containsKey(storeItem.getUpc()) && 
-				!this.storeItemsInStock.get(storeItem.getUpc()).isEmpty() && 
-				this.storeItemsInStock.get(storeItem.getUpc()).containsKey(storeItem.getUuid())){
-			this.storeItemsInStock.get(storeItem.getUpc()).remove(storeItem.getUuid());
+		System.out.println("here...");
+		System.out.println("remove store item in stock : " + storeItem.getUuid());
+		
+		if(this.getStoreItemsInStock().containsKey(storeItem.getUpc()) && 
+				!this.getStoreItemsInStock().get(storeItem.getUpc()).isEmpty() && 
+				this.getStoreItemsInStock().get(storeItem.getUpc()).containsKey(storeItem.getUuid())){
+			this.getStoreItemsInStock().get(storeItem.getUpc()).remove(storeItem.getUuid());
 		}
 	}
 	
@@ -127,16 +130,16 @@ public class GroceryStore implements Store{
 	
 	
 	public void addStoreSpecial(StoreSpecial storeSpecial) {
-		if(this.storeSpecials == null){
+		if(this.getStoreSpecials() == null){
 			this.storeSpecials = new HashMap<String, StoreSpecial>();
 		}
-		if(!this.storeSpecials.containsKey(storeSpecial.getUuid())){
-			this.storeSpecials.put(storeSpecial.getUuid(), storeSpecial);
+		if(!this.getStoreSpecials().containsKey(storeSpecial.getUuid())){
+			this.getStoreSpecials().put(storeSpecial.getUuid(), storeSpecial);
 		}
 	}
 	public void removeStoreSpecial(StoreSpecial storeSpecial) {
-		if(this.storeSpecials.containsKey(storeSpecial.getUuid())){
-			this.storeSpecials.remove(storeSpecial.getUuid());
+		if(this.getStoreSpecials().containsKey(storeSpecial.getUuid())){
+			this.getStoreSpecials().remove(storeSpecial.getUuid());
 		}
 	}
 

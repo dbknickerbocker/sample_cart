@@ -144,10 +144,10 @@ public class GroceryShopping implements Shopping {
 			Object[] uuids = this.getStore().getStoreItemsInStock().get(upc).keySet().toArray();
 			String uuid = (String) uuids[0];
 			
-			storeItemInStock = this.store.getStoreItem(upc, uuid);
+			storeItemInStock = this.getStore().getStoreItem(upc, uuid);
 		}
 
-		this.getStore().removeStoreItemInStock(storeItemInStock);
+		if(null != storeItemInStock)this.getStore().removeStoreItemInStock(storeItemInStock);
 		
 		return storeItemInStock;
 		
